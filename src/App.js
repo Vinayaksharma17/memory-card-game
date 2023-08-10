@@ -5,7 +5,7 @@ import GameContainer from "./Components/GameContainer";
 function App() {
   return (
     <div>
-      <Grid container={true}>
+      <Grid container={true} >
         <Grid item xs={12}>
           <Box sx={{ padding: "16px" }}>
             <Typography variant="h4" align="center">
