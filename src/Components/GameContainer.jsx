@@ -30,6 +30,20 @@ const GameContainer = () => {
   const [matching, setMatching] = useState(false) 
   const [score, setScore] = useState(0)
   const [moves, setMoves] = useState(0)
+  const handleStartOver = () => {
+    setScore(0)
+    setMoves(0)
+    const resetCard = cards.map((card)=>({
+      ...card, 
+      open: false,
+      remove: false
+    }))
+    setCards(resetCard)
+    setTimeout(()=>{
+      setCards(getGameData())
+    },1000)
+    
+  }
   // inplay - array of 2 cards
 
   const handleOnClick = (id) => () => {
@@ -96,6 +110,7 @@ const GameContainer = () => {
             onClick={handleOnClick} 
             score ={score}
             moves ={moves}
+            onReset = {handleStartOver}
             />
   );
 };
