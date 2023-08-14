@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import GameDisplay from "./GameDisplay";
 import arrayShuffle from "array-shuffle";
+import useSound from "use-sound";
+import cardFlipSound from "../sounds/card-flip.wav"
+import scoreSound from "../sounds/score.wav"
+import resetSound from "../sounds/reset.wav"
 
 const types = ["📚", "🎵", "🕉", "💥", "🔥", "😎", "🌍", "🚀"];
 const getGameData = () => {
@@ -30,6 +34,9 @@ const GameContainer = () => {
   const [matching, setMatching] = useState(false) 
   const [score, setScore] = useState(0)
   const [moves, setMoves] = useState(0)
+  const [playFlipSound] = useSound(cardFlipSound)
+  const [playScoreSound] = useSound(scoreSound)
+  const [playResetSound] = useSound(resetSound)
   const handleStartOver = () => {
     setScore(0)
     setMoves(0)
@@ -39,6 +46,7 @@ const GameContainer = () => {
       remove: false
     }))
     setCards(resetCard)
+    playResetSound()
     setTimeout(()=>{
       setCards(getGameData())
     },1000)
@@ -57,6 +65,7 @@ const GameContainer = () => {
     updatedCards.forEach((card) => {
       if (card.id === id) {
         card.open = true;
+        playFlipSound()
         updatedInPlay.push(card.type)
         setInPlay(updatedInPlay)
         // add to inplay array
@@ -84,6 +93,7 @@ const GameContainer = () => {
         setCards(updatedCards)
         setMatching(false)
         setScore(score + 1)
+        playScoreSound()
         setInPlay([])
         //match
       } else{

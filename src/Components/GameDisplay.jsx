@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Container, Box, Button } from "@mui/material";
 import GameCard from "./GameCard";
-const GameDisplay = ({ cards, onClick, score, moves}) => {
+const GameDisplay = ({ cards, onClick, score, moves, onReset}) => {
   const handleClick = () => {};
   return (
     <Grid container spacing={1}>
@@ -28,7 +28,7 @@ const GameDisplay = ({ cards, onClick, score, moves}) => {
             <Box sx={{display:'flex', justifyContent:'center', alignItems:'center'}}>
               Moves: {moves}
             </Box>
-            <Button>Start Over</Button>
+            <Button onClick={onReset}>Start Over</Button>
             <Box sx={{display:'flex', justifyContent:'center', alignItems:'center'}}>
               Score: {score}
             </Box>
