@@ -1,6 +1,8 @@
 import "./App.css";
 import { Box, Grid, Typography } from "@mui/material";
 import GameContainer from "./Components/GameContainer";
+import logo from "./puzzle-icon.svg"
+import { Height } from "@mui/icons-material";
 
 function App() {
   return (
@@ -9,6 +11,7 @@ function App() {
         <Grid item xs={12}>
           <Box sx={{ padding: "16px" }}>
             <Typography variant="h4" align="center">
+              <img src={logo} alt="logo" style={{width:'30px', height:'30px'}}/>
               Memory Card
             </Typography>
           </Box>
